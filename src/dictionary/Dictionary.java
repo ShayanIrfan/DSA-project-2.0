@@ -34,6 +34,7 @@ public class Dictionary extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         txtResult = new javax.swing.JTextPane();
         txt = new javax.swing.JTextField();
+        Heading = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -41,6 +42,7 @@ public class Dictionary extends javax.swing.JFrame {
                 formWindowOpened(evt);
             }
         });
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         list.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
@@ -49,39 +51,30 @@ public class Dictionary extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(list);
 
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 590, 290));
+
         jScrollPane2.setViewportView(txtResult);
 
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 590, 30));
+
+        txt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtActionPerformed(evt);
+            }
+        });
         txt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtKeyTyped(evt);
             }
         });
+        getContentPane().add(txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 73, 591, 28));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txt, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(txt, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE))
-                .addContainerGap())
-        );
+        Heading.setFont(new java.awt.Font("Helvetica", 0, 11)); // NOI18N
+        Heading.setText("Phone Directory");
+        Heading.setMaximumSize(new java.awt.Dimension(79, 50));
+        Heading.setMinimumSize(new java.awt.Dimension(79, 50));
+        Heading.setPreferredSize(new java.awt.Dimension(79, 50));
+        getContentPane().add(Heading, new org.netbeans.lib.awtextra.AbsoluteConstraints(243, 11, 90, 56));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -96,20 +89,22 @@ public class Dictionary extends javax.swing.JFrame {
 
         BinaryTree theTree = new BinaryTree();
 
-        theTree.addNode("Vice President", "aihdads");
+        theTree.addNode("Jake", "+923115769285");
 
-        theTree.addNode("Office Manager", "klahsdad");
+        theTree.addNode("Karthik", "+923002598763");
 
-        theTree.addNode("Boss", "owner of the company");
+        theTree.addNode("Jennifer", "+926558731657");
 
-        theTree.addNode("Secretary", "liasdad");
+        theTree.addNode("Jane", "+928956253145");
 
-        theTree.addNode("Salesman 1", "lasdhad");
+        theTree.addNode("Peter", "+925896310254");
         
-        theTree.addNode("Sales Manager", "lkajhsdasd");
+        theTree.addNode("Ahmed", "+926589732512");
 
+        theTree.addNode("Inam", "+926598730125");
+        
+        theTree.addNode("Salman", "+926556980125");
 
-        theTree.addNode("Zoo", "ieurtoeirt");
 
         // Different ways to traverse binary trees
         // theTree.inOrderTraverseTree(theTree.root);
@@ -127,7 +122,7 @@ public class Dictionary extends javax.swing.JFrame {
         obj1.quickSort(0, arrNew.length - 1);
         for (Node elem : obj1.arr) {
             arr.add(elem);
-            mod.addElement(elem.word);
+            mod.addElement(elem.name);
         }
 
 //        obj = new Data("Apple", "juicy fruit");
@@ -143,7 +138,7 @@ public class Dictionary extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (!list.isSelectionEmpty()) {
             int index = list.getSelectedIndex();
-            txtResult.setText(arr.get(index).meaning);
+            txtResult.setText(arr.get(index).number);
         }
     }//GEN-LAST:event_listValueChanged
 
@@ -166,9 +161,13 @@ public class Dictionary extends javax.swing.JFrame {
                 return;
             }
         }
-        txtResult.setText("This word not found");
+        txtResult.setText("This name not found");
         list.clearSelection();
     }//GEN-LAST:event_txtKeyTyped
+
+    private void txtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtActionPerformed
 
     /**
      * @param args the command line arguments
@@ -206,6 +205,7 @@ public class Dictionary extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Heading;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JList<String> list;
